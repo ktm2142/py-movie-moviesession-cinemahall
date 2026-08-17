@@ -1,3 +1,4 @@
+from typing import Optional
 from datetime import datetime
 from db.models import MovieSession
 from django.db.models import QuerySet
@@ -33,9 +34,9 @@ def get_movie_session_by_id(
 
 def update_movie_session(
         session_id: int,
-        show_time: datetime | None = None,
-        movie_id: int | None = None,
-        cinema_hall_id: int | None = None
+        show_time: Optional[datetime] = None,
+        movie_id: Optional[int] = None,
+        cinema_hall_id: Optional[int] = None
 ) -> MovieSession:
     fields_to_update = {
         "show_time": show_time,

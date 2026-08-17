@@ -7,18 +7,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('db', '0003_rename_genre_movie_genres'),
+        ("db", "0003_rename_genre_movie_genres"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='moviesession',
-            name='cinema_hall',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='movie_sessions', to='db.cinemahall'),
+            model_name="moviesession",
+            name="cinema_hall",
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="movie_sessions", to="db.cinemahall"),
         ),
         migrations.AlterField(
-            model_name='moviesession',
-            name='movie',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='movie_sessions', to='db.movie'),
+            model_name="moviesession",
+            name="movie",
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="movie_sessions", to="db.movie"),
         ),
     ]
