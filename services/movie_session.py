@@ -36,22 +36,23 @@ def update_movie_session(
         show_time: datetime | None = None,
         movie_id: int | None = None,
         cinema_hall_id: int | None = None
-) -> QuerySet:
+) -> MovieSession:
     fields_to_update = {
         "show_time": show_time,
         "cinema_hall_id": cinema_hall_id,
         "movie_id": movie_id
     }
-    data = {
-        key: value
-        for key, value in fields_to_update.items()
-        if value is not None
-    }
-    queryset = MovieSession.objects.filter(
+
+    movie_session = MovieSession.objects.get(
         pk=session_id
     )
-    queryset.update(**data)
-    return queryset
+
+    for key, value in fields_to_update.items():
+        if value is not None:
+            setattr(movie_session, key, value)
+    movie_session.save()
+
+    return movie_session
 
 
 def delete_movie_session_by_id(session_id: int) -> None:
